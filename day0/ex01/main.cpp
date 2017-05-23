@@ -16,13 +16,13 @@ int main() {
 	std::string sUnderwareCol = "";
 	std::string sDarkestSecret = "";
 	std::string sFunction = "";
-	int iSearchIndex = 0;
+	int iSearchIndex = 99;
 	int icount = 0;
 
 	Contact newContact[8];
 
 	while (1) {
-		std::cout << "Enter Option ADD | Search | Exit" << std::endl;
+		std::cout << "Enter Option ADD | SEARCH | EXIT" << std::endl;
 		std::getline(std::cin, sFunction);
 		//std::cin >> sFunction;
 		if (sFunction == "ADD" && icount <= 7) {
@@ -56,27 +56,31 @@ int main() {
 			icount++;
 
 		} else if (sFunction == "SEARCH") {
-			std::cout << std::setw(10) << std::right << "index" << "|" << std::setw(10) << std::right << "first name" << "|" << std::setw(10) << std::right << "last name" << "|" << std::setw(10) << std::right << "nickname" << "|" << std::endl;
+			std::cout  << std::setw(10) << std::right << "index" << "|" << std::setw(10) << std::right << "first name" << "|" << std::setw(10) << std::right << "last name" << "|" << std::setw(10) << std::right << "nickname" << "|" << std::endl;
 			for (int i = 0; i < icount; ++i) {
 				std::cout << std::setw(10) << std::right <<i<< "|";
 				if (newContact[i].get_sFname().length() > 10)
 					std::cout << std::setw(9) << std::right << newContact[i].get_sFname().substr(0, 9) << "." << "|";
 				else
-					std::cout << std::setw(9) << std::right << newContact[i].get_sFname() << "|";
+					std::cout << std::setw(10) << std::right << newContact[i].get_sFname() << "|";
 				if (newContact[i].get_sLname().length() > 10)
 					std::cout << std::setw(9) << std::right << newContact[i].get_sLname().substr(0, 9) << "." << "|";
 				else
-					std::cout << std::setw(9) << std::right << newContact[i].get_sLname() << "|";
+					std::cout << std::setw(10) << std::right << newContact[i].get_sLname() << "|";
 				if (newContact[i].get_sNname().length() > 10)
 					std::cout << std::setw(9) << std::right << newContact[i].get_sNname().substr(0, 9) << "." << "|" << std::endl;
 				else
 					std::cout << std::setw(10) << std::right << newContact[i].get_sNname() << "|" << std::endl;
 			}
 			std::cout << "Please Enter Index Number Of The Desired Entry\n";
-			std::cin >> iSearchIndex;
+			if (std::cin >> iSearchIndex) {
+			} else {
+				std::cout << "Please enter a valid integer" << std::endl;
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
 
-			if (iSearchIndex >= 0 && iSearchIndex <= 7) {
-
+			if ((iSearchIndex >= 0 && iSearchIndex <= 7) && (iSearchIndex <= icount)) {
 
 				std::cout << newContact[iSearchIndex].get_sFname() << std::endl;
 				std::cout << newContact[iSearchIndex].get_sLname() << std::endl;
@@ -89,9 +93,8 @@ int main() {
 				std::cout << newContact[iSearchIndex].get_sFavMeal() << std::endl;
 				std::cout << newContact[iSearchIndex].get_sUnderwareCol() << std::endl;
 				std::cout << newContact[iSearchIndex].get_sDarkestSecret() << std::endl;
-				std::cout << "search" << std::endl;
 			} else
-				std::cout << "invalid index";
+				std::cout << "invalid index\n";
 
 		} else if (sFunction == "EXIT") {
 			return 0;
