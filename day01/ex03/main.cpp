@@ -6,6 +6,5 @@ int main() {
 
 	newHord.announce();
 
-	delete(newHord);
 	return 0;
 }

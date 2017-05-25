@@ -7,9 +7,12 @@
 
 Zombie::Zombie(const std::string &type, const std::string &name) : type(type), name(name) {}
 
-Zombie::Zombie(){}
+Zombie::Zombie(){
+	std::cout << "Zombie Made\n";
+}
 
 Zombie::~Zombie() {
+	std::cout << "Dead Zombie!\n";
 
 }
 

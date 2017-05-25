@@ -6,10 +6,10 @@
 #include "HumanA.hpp"
 
 void HumanA::attack() {
-	std::cout << this->name << " Attacks with his Weapon " << this->weapon->type << std::endl;
+	std::cout << this->name << " Attacks with his Weapon " << this->weapon.type << std::endl;
 }
 
-HumanA::HumanA(const std::string &name, Weapon weapon) : name(name), weapon(new Weapon(weapon.type)) {}
+HumanA::HumanA(const std::string &name, Weapon &weapon) : name(name), weapon(weapon) {}
 
 HumanA::~HumanA() {
 
@@ -23,13 +23,10 @@ void HumanA::setName(const std::string &name) {
 	HumanA::name = name;
 }
 
-Weapon *HumanA::getWeapon() const {
+Weapon HumanA::getWeapon() const {
 	return weapon;
 }
 
-void HumanA::setWeapon(Weapon *weapon) {
-	HumanA::weapon = weapon;
-}
 
 
 

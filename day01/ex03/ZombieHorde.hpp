@@ -16,7 +16,10 @@ public:
 	int Z;
 
 	void announce ();
+
+	virtual ~ZombieHorde();
 };
+
 
 
 #endif //EX03_ZOMBIEHORDE_HPP

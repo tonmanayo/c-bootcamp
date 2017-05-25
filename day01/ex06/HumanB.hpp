@@ -22,7 +22,7 @@ public:
 
 	const Weapon &getWeapon() const;
 
-	void setWeapon(Weapon weapon);
+	void setWeapon(Weapon &weapon);
 
 	const std::string &getName() const;
 

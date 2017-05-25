@@ -17,8 +17,10 @@ ZombieHorde::ZombieHorde(int Z) {
 	for (int i = 0; i < Z ; i++) {
 		nbr =  rand() % 5;
 		 nbr2 = rand() % 5 ;
-		this->arrZombie[i] = Zombie(types[nbr2], names[nbr]);
+		this->arrZombie[i].setType(types[nbr2]);
+		this->arrZombie[i].setName(names[nbr]);
 	}
+	this->announce();
 }
 
 void ZombieHorde::announce() {
@@ -27,3 +29,9 @@ void ZombieHorde::announce() {
 		this->arrZombie[i].announce();
 	}
 }
+
+ZombieHorde::~ZombieHorde() {
+	delete [] this->arrZombie;
+
+}
+

@@ -24,8 +24,8 @@ const Weapon &HumanB::getWeapon() const {
 	return *weapon;
 }
 
-void HumanB::setWeapon(Weapon weapon) {
-	HumanB::weapon = new Weapon(weapon.type);
+void HumanB::setWeapon(Weapon &weapon) {
+	HumanB::weapon = &weapon;
 }
 
 

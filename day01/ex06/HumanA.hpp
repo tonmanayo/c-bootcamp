@@ -10,12 +10,12 @@
 
 class HumanA {
 	std::string name;
-	Weapon *weapon;
+	Weapon & weapon;
 
 public:
 	void attack();
 
-	HumanA(const std::string &name, Weapon weapon);
+	HumanA(const std::string &name, Weapon& weapon);
 
 	virtual ~HumanA();
 
@@ -23,9 +23,8 @@ public:
 
 	void setName(const std::string &name);
 
-	Weapon *getWeapon() const;
+	Weapon getWeapon() const;
 
-	void setWeapon(Weapon *weapon);
 
 };
 #endif //EX06_HUMANA_HPP
